@@ -5,7 +5,7 @@ const game = document.getElementById("game");
 const context = game.getContext("2d");
 const score1 = document.querySelector(".player1");
 const score2 = document.querySelector(".player2");
-const endGame = document.querySelector(".winner");
+const endGame = document.querySelector(".instructions");
 
 // Player
 const playerWidth = 10;
@@ -160,7 +160,10 @@ const gameLoop = function () {
     requestAnimationFrame(gameLoop);
   } else {
     cancelAnimationFrame(gameLoop);
-    endGame.classList.remove("hidden");
+    endGame.textContent = `${
+      player1Score === 3 ? "Player 1" : "Player 2"
+    } won!`;
+    document.addEventListener("keypress", () => location.reload());
   }
 };
 
